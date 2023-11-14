@@ -6,8 +6,8 @@ Reprendre le HTML suivant et le transformer en JSX dans `App.tsx` :
 
 ```
 <form class="todos-form">
-  <input type="checkbox" class="todos-toggle-checked" />
-  <input type="text" class="todos-new-input" />
+  <input type="checkbox" class="todos-toggle-checked">
+  <input type="text" class="todos-new-input">
   <button>+</button>
 </form>
 <div class="todos-container"></div>
