@@ -2,6 +2,13 @@ import { ReactNode } from "react";
 import TodoItem from "./TodoItem";
 
 function App(): ReactNode {
+  const todos = [
+    { _id: 'abcdef1234', title: 'ABC', completed: false },
+    { _id: 'dngudtub45', title: 'DEF', completed: true },
+    { _id: 'dfgfg35335', title: 'XYZ', completed: false },
+  ];
+  const editingId = 'dfgfg35335';
+
   return (
     <div className="App">
       <form className="todos-form">
@@ -10,9 +17,7 @@ function App(): ReactNode {
         <button>+</button>
       </form>
       <div className="todos-container">
-        <TodoItem todo={{ _id: 'abcdfdfg', title: 'ABC' }} />
-        <TodoItem todo={{ _id: 'jdifjhbo', title: 'DEF' }} />
-        <TodoItem todo={{ _id: 'bgfugufb', title: 'XYZ', completed: true }} />
+        {todos.map((todo) => <TodoItem key={todo._id} todo={todo} isEditing={todo._id === editingId} />)}
       </div>
     </div>
   );
