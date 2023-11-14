@@ -10,9 +10,9 @@ function App(): ReactNode {
         <button>+</button>
       </form>
       <div className="todos-container">
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
+        <TodoItem todo={{ _id: 'abcdfdfg', title: 'ABC' }} />
+        <TodoItem todo={{ _id: 'jdifjhbo', title: 'DEF' }} />
+        <TodoItem todo={{ _id: 'bgfugufb', title: 'XYZ', completed: true }} />
       </div>
     </div>
   );

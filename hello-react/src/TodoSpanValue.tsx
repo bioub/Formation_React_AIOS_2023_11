@@ -1,9 +1,21 @@
-import { ReactNode } from "react"
+import { HTMLAttributes, ReactNode } from "react"
 
-function TodoSpanValue(): ReactNode {
+type Props = {
+  value: string
+} & HTMLAttributes<HTMLSpanElement>;
+
+// interface Props extends HTMLAttributes<HTMLSpanElement> {
+//   value: string;
+// }
+
+function TodoSpanValue({ value, ...spanProps }: Props): ReactNode {
+  // const spanProps: HTMLAttributes<HTMLSpanElement> = {
+  //   className: 'TodoSpanValue'
+  // }
+
   return (
-    <span className="TodoSpanValue">
-      ABC
+    <span {...spanProps}>
+      {value}
     </span>
   )
 }
