@@ -14,7 +14,7 @@ function TodoItem({ todo, isEditing }: Props): ReactNode {
       <input
         type="checkbox"
         className="todosCompleted"
-        defaultChecked={todo.completed ?? false}
+        checked={todo.completed ?? false}
       />
       {isEditing ? (
         <TodoInputValue value={todo.title} />
