@@ -88,7 +88,7 @@ function App(): ReactNode {
     { _id: 'dngudtub45', title: 'DEF', completed: true },
     { _id: 'dfgfg35335', title: 'XYZ', completed: false },
   ]);
-  const editingId = 'dfgfg35335';
+  const [editingId, setEditingId] = useState('dfgfg35335');
 
   const [newTodo, setNewTodo] = useState('ABC');
 
@@ -121,6 +121,10 @@ function App(): ReactNode {
     setTodos(newTodos);
   }
 
+  function handleTodoDelete(todo: Todo): void {
+    setTodos(todos.filter((t) => t._id !== todo._id));
+  }
+
   return (
     <div className="App">
       <form className="todos-form" onSubmit={handleSubmit}>
@@ -144,6 +148,8 @@ function App(): ReactNode {
             todo={todo}
             isEditing={todo._id === editingId}
             onTodoEdit={handleTodoEdit}
+            onTodoDelete={handleTodoDelete}
+            onEditingIdChange={setEditingId}
           />
         ))}
       </div>

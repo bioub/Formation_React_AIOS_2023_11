@@ -1,7 +1,7 @@
 import { HTMLAttributes, ReactNode } from "react"
 
 type Props = {
-  value: string
+  value: string;
 } & HTMLAttributes<HTMLSpanElement>;
 
 // interface Props extends HTMLAttributes<HTMLSpanElement> {

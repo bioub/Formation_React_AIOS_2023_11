@@ -7,9 +7,11 @@ type Props = Readonly<{
   todo: Todo;
   isEditing?: boolean;
   onTodoEdit(todo: Todo): void;
+  onTodoDelete(todo: Todo): void;
+  onEditingIdChange(editingId: string): void;
 }>;
 
-function TodoItem({ todo, isEditing, onTodoEdit }: Props): ReactNode {
+function TodoItem({ todo, isEditing, onTodoEdit, onTodoDelete, onEditingIdChange }: Props): ReactNode {
   return (
     <div className="todosItem" data-todo-id={todo._id}>
       <input
@@ -19,11 +21,11 @@ function TodoItem({ todo, isEditing, onTodoEdit }: Props): ReactNode {
         onChange={(e) => onTodoEdit({...todo, completed: e.target.checked})}
       />
       {isEditing ? (
-        <TodoInputValue value={todo.title} />
+        <TodoInputValue value={todo.title} onInputChange={(val) => onTodoEdit({...todo, title: val})} onTypeEnter={() => onEditingIdChange('')} />
       ) : (
-        <TodoSpanValue value={todo.title} className="TodoSpanValue" />
+        <TodoSpanValue onDoubleClick={() => onEditingIdChange(todo._id)} value={todo.title} className="TodoSpanValue" />
       )}
-      <button className="todosDeleteBtn">-</button>
+      <button className="todosDeleteBtn" onClick={() => onTodoDelete(todo)}>-</button>
     </div>
   );
 }
