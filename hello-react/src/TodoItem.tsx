@@ -6,15 +6,17 @@ import TodoInputValue from './TodoInputValue';
 type Props = Readonly<{
   todo: Todo;
   isEditing?: boolean;
+  onTodoEdit(todo: Todo): void;
 }>;
 
-function TodoItem({ todo, isEditing }: Props): ReactNode {
+function TodoItem({ todo, isEditing, onTodoEdit }: Props): ReactNode {
   return (
     <div className="todosItem" data-todo-id={todo._id}>
       <input
         type="checkbox"
         className="todosCompleted"
-        checked={todo.completed ?? false}
+        checked={todo.completed}
+        onChange={(e) => onTodoEdit({...todo, completed: e.target.checked})}
       />
       {isEditing ? (
         <TodoInputValue value={todo.title} />

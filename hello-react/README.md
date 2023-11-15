@@ -159,3 +159,29 @@ Ecouter le click ou le change de la checkbox :
 `<input type="checkbox" className="todos-toggle-checked" />`
 
 Au click cocher/décocher toutes les checkboxes de `TodoItem`.
+
+## Communication inter-composant
+
+### Exercice 1
+
+Dans `TodoItem`, lorsqu'on clique sur le bouton moins, on doit supprimer la todo
+du state todos de `App`
+
+Pour celà on va descendre un fonction déclarée dans `App` via les props de `TodoItem`
+
+Dans le `type Props` de `TodoItem` déclarer une nouvelle fonction `onTodoDelete` qui
+sera appelée avec la todo en paramètre
+
+Au click du bouton moins, appeler cette fonction avec la todo (reçu des props)
+
+Déclarer une fonction handleTodoDelete dans `App`, qui va supprimer du tableau (de manière immuable) la todo reçue en paramètre
+
+Indice: pour supprimer un ou plusieurs élément en immuable vous pouvez utiliser filter du type Array
+
+### Exercice 2
+
+Au double-click de la balise span, remonter jusqu'à App l'id de la todo dans `editingId`
+
+Lorqu'on saisit dans le champs remonter la valeur saisie avec `onTodoEdit`
+
+Ecouter l'événement keydown de l'input, s'il correspond à la touche Entrée, repasser `editingId` à chaine vide `''`
