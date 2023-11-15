@@ -152,3 +152,10 @@ setTodos(
   ]
 )
 ```
+
+Bonus :
+
+Ecouter le click ou le change de la checkbox :
+`<input type="checkbox" className="todos-toggle-checked" />`
+
+Au click cocher/décocher toutes les checkboxes de `TodoItem`.
