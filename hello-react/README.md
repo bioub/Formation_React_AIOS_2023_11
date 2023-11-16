@@ -209,3 +209,23 @@ async function fetchTodos(): Promise<Todo[]> {
 Appeler cette fonction dans un effet au chargement du composant et stocker
 les résultats dans le state `todos`
 
+## Tests
+
+Installer `vitest`, `@testing-library/react` et  `@testing-library/jest-dom` en `devDependencies`
+
+Reprendre la config `vitest.config.ts`, `tsconfig.json` et `setupTests.ts` dans `hello-tests`.
+
+Dans le repository :
+https://gitlab.com/exercices-tests/typescript
+
+Importer et tester les fonctions suivantes :
+- `exercices-pure-functions/totalPairs.ts`
+- `exercices-errors/racineCarre.ts`
+- `exercices-doubles/genererAlea.ts`
+- `exercices-async/promiseRandomTimeout.ts`
+
+Tester les props de `TodoInputValue` avec :
+- `getByDisplayValue` : https://testing-library.com/docs/queries/bydisplayvalue/
+- `vitest.fn()` pour les `onInputChange`, `onTypeEnter` et `fireEvent` pour émettre les événements
+
+Voir aussi `@testing-library/user-event` https://testing-library.com/docs/user-event/intro

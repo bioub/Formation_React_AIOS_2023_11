@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Hello renders > Hello component renders (snapshot testing) 1`] = `
+<div
+  className="Hello"
+>
+  Hello, world!
+</div>
+`;

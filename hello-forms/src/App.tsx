@@ -13,7 +13,7 @@ function App() {
       <UserFormControlled />
       <UserFormUncontrolled />
       <UserFormSSR />
-      <p>Name : {name}</p>
+      <p className='menu'>Name : {name}</p>
       <Select items={['Toto', 'Titi', 'Tata']} selected={name} onSelected={setName} />
     </>
   )

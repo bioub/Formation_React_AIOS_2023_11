@@ -1,3 +1,5 @@
+
+import styles from './Select.module.css';
 import { ReactNode, useEffect, useRef, useState } from "react"
 
 type Props = {
@@ -32,9 +34,9 @@ function Select({ items, selected, onSelected }: Props): ReactNode {
 
   return (
     <div className="Select" ref={hostRef}>
-      <div onClick={handleSelectedClick}>{selected}</div>
-      {menuOpen && <div>
-        {items.map((item) => <div key={item} onClick={() => handleItemClick(item)}>{item}</div>)}
+      <div className={styles.selected} onClick={handleSelectedClick}>{selected}</div>
+      {menuOpen && <div className={styles.menu}>
+        {items.map((item) => <div className={styles.item} key={item} onClick={() => handleItemClick(item)}>{item}</div>)}
       </div>}
     </div>
   )
