@@ -1,4 +1,4 @@
-import { KeyboardEvent, ReactNode } from "react"
+import { KeyboardEvent, ReactNode, useEffect, useRef } from "react"
 
 type Props = {
   value: string;
@@ -7,6 +7,12 @@ type Props = {
 };
 
 function TodoInputValue({ value, onInputChange, onTypeEnter }: Props): ReactNode {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    inputRef.current?.select();
+  }, []);
+  
   function handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
     if (event.code === 'Enter') {
       onTypeEnter();
@@ -14,7 +20,7 @@ function TodoInputValue({ value, onInputChange, onTypeEnter }: Props): ReactNode
   }
 
   return (
-    <input className="TodoInputValue" value={value} onChange={(e) => onInputChange(e.target.value)} onKeyDown={handleKeyDown} />
+    <input ref={inputRef} className="TodoInputValue" value={value} onChange={(e) => onInputChange(e.target.value)} onKeyDown={handleKeyDown} />
   )
 }
 

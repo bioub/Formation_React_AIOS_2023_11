@@ -1,6 +1,7 @@
-import { ChangeEvent, FormEvent, ReactNode, useState } from 'react';
+import { ChangeEvent, FormEvent, ReactNode, useEffect, useState } from 'react';
 import TodoItem from './TodoItem';
 import { Todo } from './Todo';
+import { fetchTodos } from './api';
 /*
 import { useImmer } from 'use-immer';
 
@@ -82,6 +83,7 @@ function App(): ReactNode {
 */
 
 
+
 function App(): ReactNode {
   const [todos, setTodos] = useState<Todo[]>([
     { _id: 'abcdef1234', title: 'ABC', completed: false },
@@ -91,6 +93,24 @@ function App(): ReactNode {
   const [editingId, setEditingId] = useState('dfgfg35335');
 
   const [newTodo, setNewTodo] = useState('ABC');
+
+  useEffect(() => {
+    function handleWindowClick(event: MouseEvent) {
+      if (!(event.target as HTMLElement).classList.contains('TodoInputValue')) {
+        setEditingId('');
+      }
+    }
+    window.addEventListener('click', handleWindowClick);
+    return () => {
+      window.removeEventListener('click', handleWindowClick);
+    };
+  }, []);
+
+  useEffect(() => {
+    fetchTodos().then((todos) => {
+      setTodos(todos);
+    });
+  }, []);
 
   function handleTextChange(event: ChangeEvent<HTMLInputElement>) {
     setNewTodo(event.currentTarget.value);

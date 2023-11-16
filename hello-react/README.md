@@ -197,12 +197,12 @@ async function fetchTodos(): Promise<Todo[]> {
   const res = await fetch('https://jsonplaceholder.typicode.com/todos');
   const data = await res.json();
   return data
+    .slice(0, 20)
     .map((t: any) => ({
       _id: String(t.id),
       title: t.title,
       completed: t.completed,
-    }))
-    .slice(0, 20);
+    }));
 }
 ```
 
