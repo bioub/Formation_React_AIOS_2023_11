@@ -185,3 +185,27 @@ Au double-click de la balise span, remonter jusqu'à App l'id de la todo dans `e
 Lorqu'on saisit dans le champs remonter la valeur saisie avec `onTodoEdit`
 
 Ecouter l'événement keydown de l'input, s'il correspond à la touche Entrée, repasser `editingId` à chaine vide `''`
+
+## Effects
+
+Dans App écouter le click de window dans un Effet et remettre editingId à chaine vide `''`
+
+Créer la fonction suivante dans App :
+
+```
+async function fetchTodos(): Promise<Todo[]> {
+  const res = await fetch('https://jsonplaceholder.typicode.com/todos');
+  const data = await res.json();
+  return data
+    .map((t: any) => ({
+      _id: String(t.id),
+      title: t.title,
+      completed: t.completed,
+    }))
+    .slice(0, 20);
+}
+```
+
+Appeler cette fonction dans un effet au chargement du composant et stocker
+les résultats dans le state `todos`
+

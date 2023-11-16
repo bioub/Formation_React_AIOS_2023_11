@@ -5,7 +5,7 @@ import { Todo } from './Todo';
 import { useImmer } from 'use-immer';
 
 function App(): ReactNode {
-  const [todos, setTodos] = useImmer([
+  const [todos, setTodos] = useImmer<Todo[]>([
     { _id: 'abcdef1234', title: 'ABC', completed: false },
     { _id: 'dngudtub45', title: 'DEF', completed: true },
     { _id: 'dfgfg35335', title: 'XYZ', completed: false },
@@ -156,7 +156,6 @@ function App(): ReactNode {
     </div>
   );
 }
-
 
 export default App;
 
